@@ -19,6 +19,7 @@ func horizontal_animation(direction):
 		else:
 			get_node("Texture").flip_h = true
 	else:
+		$Footsteps.play()
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		$Animation.play("idle")
 
@@ -34,6 +35,7 @@ func jump():
 		jump_count = 0
 	if Input.is_action_just_pressed("jump") and jump_count < 2:
 		velocity.y = jump_speed
+		$Jump.play()
 		jump_count += 1
 		print(jump_count)
 	
