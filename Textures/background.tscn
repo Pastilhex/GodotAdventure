@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://cwc40mnc653le"]
+
+[ext_resource type="Texture2D" uid="uid://djdwnkdoajhxo" path="res://Assets/free-cartoon-forest-game-backgrounds/PNG/Cartoon_Forest_BG_03/Cartoon_Forest_BG_03.png" id="1_b6xpy"]
+
+[node name="ParallaxBackground" type="ParallaxBackground"]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+
+[node name="BackgroundLayer" type="TextureRect" parent="ParallaxLayer"]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_b6xpy")
