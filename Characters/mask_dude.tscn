@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://pijarwh14ueu"]
+[gd_scene load_steps=31 format=3 uid="uid://pijarwh14ueu"]
 
 [ext_resource type="Script" path="res://Characters/Scripts/mask_dude.gd" id="1_i50p7"]
 [ext_resource type="Texture2D" uid="uid://cwggo32p07k0a" path="res://Assets/Pixel Adventure 1/Free/Main Characters/Mask Dude/Idle (32x32).png" id="1_ny5w1"]
@@ -9,8 +9,13 @@
 [ext_resource type="Texture2D" uid="uid://b4m54ugwexifd" path="res://Assets/Pixel Adventure 1/Free/Main Characters/Mask Dude/Fall (32x32).png" id="6_m0sqf"]
 [ext_resource type="Texture2D" uid="uid://k1f5fc73cv0o" path="res://Assets/Pixel Adventure 1/Free/Main Characters/Mask Dude/Wall Jump (32x32).png" id="6_omqx0"]
 [ext_resource type="AudioStream" uid="uid://cvg4biwxpjlq3" path="res://Assets/toy-button-105724.mp3" id="7_tp272"]
-[ext_resource type="AudioStream" uid="uid://cr0nxyr2mxjpm" path="res://Assets/running-1-6846.mp3" id="9_csb1s"]
+[ext_resource type="AudioStream" uid="uid://dhv37gxv73jpa" path="res://Sound/SFX/Step/step-01.ogg" id="9_wm2un"]
+[ext_resource type="AudioStream" uid="uid://bbqv668085lq0" path="res://Sound/SFX/Step/step-02.ogg" id="10_qisnv"]
+[ext_resource type="AudioStream" uid="uid://bu77nmg3qffkj" path="res://Sound/SFX/Step/step-03.ogg" id="11_q3ycq"]
 [ext_resource type="PackedScene" uid="uid://dagsvruoorn4c" path="res://Textures/gpu_particles_2d.tscn" id="11_skss5"]
+[ext_resource type="AudioStream" uid="uid://6e7l6nygt3ud" path="res://Sound/SFX/Step/step-04.ogg" id="12_4rquk"]
+[ext_resource type="AudioStream" uid="uid://dobpv86603h5o" path="res://Sound/SFX/Step/step-05.ogg" id="13_o16kw"]
+[ext_resource type="AudioStream" uid="uid://c1y3ownkjnbgm" path="res://Sound/SFX/landing.ogg" id="15_c7o7e"]
 
 [sub_resource type="Animation" id="Animation_g66p4"]
 length = 0.001
@@ -49,6 +54,18 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Footsteps:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_5bpkn"]
@@ -292,6 +309,18 @@ tracks/2/keys = {
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Footsteps:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
+}
 
 [sub_resource type="Animation" id="Animation_573sk"]
 resource_name = "wall_jump"
@@ -349,8 +378,44 @@ _data = {
 radius = 9.0
 height = 28.0
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_4ehhv"]
+streams_count = 5
+stream_0/stream = ExtResource("9_wm2un")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("10_qisnv")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("11_q3ycq")
+stream_2/weight = 1.0
+stream_3/stream = ExtResource("12_4rquk")
+stream_3/weight = 1.0
+stream_4/stream = ExtResource("13_o16kw")
+stream_4/weight = 1.0
+
+[sub_resource type="Curve" id="Curve_qjtqp"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -1.656, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_aayfv"]
+curve = SubResource("Curve_qjtqp")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_irurc"]
+emission_shape = 1
+emission_sphere_radius = 4.0
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+spread = 90.0
+gravity = Vector3(0, 80, 0)
+initial_velocity_min = 500.0
+initial_velocity_max = 500.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_min = 0.0
+scale_max = 1.5
+scale_curve = SubResource("CurveTexture_aayfv")
+
 [node name="MaskDude" type="CharacterBody2D" groups=["player"]]
 collision_mask = 6
+platform_floor_layers = 4294967291
 script = ExtResource("1_i50p7")
 
 [node name="Texture" type="Sprite2D" parent="."]
@@ -375,16 +440,31 @@ limit_right = 1920
 limit_bottom = 1080
 
 [node name="Footsteps" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("9_csb1s")
-pitch_scale = 1.01
+stream = SubResource("AudioStreamRandomizer_4ehhv")
 
 [node name="Jump" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_tp272")
 volume_db = -37.103
 pitch_scale = 1.68
 
+[node name="Landing" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("15_c7o7e")
+volume_db = 2.0
+pitch_scale = 0.45
+
 [node name="Dust" parent="." instance=ExtResource("11_skss5")]
 show_behind_parent = true
 position = Vector2(0, 14)
 scale = Vector2(-0.0800005, 0.08)
 amount = 9
+
+[node name="DustExplosive" parent="." instance=ExtResource("11_skss5")]
+show_behind_parent = true
+position = Vector2(0, 14)
+scale = Vector2(-0.0800005, 0.08)
+emitting = false
+amount = 9
+process_material = SubResource("ParticleProcessMaterial_irurc")
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0

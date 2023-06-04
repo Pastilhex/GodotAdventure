@@ -6,6 +6,7 @@ const JUMP_VELOCITY = -400.0
 var jump_count = 0
 var jump_speed = -250
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+var grounded = false
 
 
 func _ready():
@@ -16,8 +17,7 @@ func _ready():
 #	$Camera2D.limit_top = tilemap_rect.position.y * tilemap_cell_size.y
 #	$Camera2D.limit_top = tilemap_rect.end.y * tilemap_cell_size.y
 	pass
-	
-	
+
 func horizontal_animation(direction):
 	#Se a direção for diferente de 0 move-se para os lados
 	if direction != 0:
@@ -29,7 +29,6 @@ func horizontal_animation(direction):
 		else:
 			get_node("Texture").flip_h = true
 	else:
-		$Footsteps.play()
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		$Dust.emitting = false
 		$Animation.play("idle")
@@ -42,6 +41,12 @@ func vertical_animation():
 	elif velocity.y > 0:
 		$Dust.emitting = false
 		$Animation.play("fall")
+
+func landing_animation():
+	$Landing.play()
+	$DustExplosive.restart()
+	$DustExplosive.emitting = true
+	#can add dust cloud animation when landing
 
 func jump():
 	if is_on_floor():
@@ -65,11 +70,15 @@ func check_collision():
 
 func _physics_process(delta):
 	if not is_on_floor():
+		grounded = false
 		velocity.y += gravity * delta
-
+	elif is_on_floor():
+		if not grounded:
+			grounded = true
+			landing_animation()
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
-
+	
 	var direction = Input.get_axis("left", "right")
 	horizontal_animation(direction)
 	vertical_animation()
@@ -80,6 +89,3 @@ func _physics_process(delta):
 func _input(event):
 	if event.is_action_pressed("restart"):
 		get_tree().reload_current_scene()
-
-
-	

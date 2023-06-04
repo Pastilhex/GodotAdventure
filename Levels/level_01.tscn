@@ -1929,7 +1929,7 @@ bat_margin = Vector2(-50, 0)
 position = Vector2(149, 640)
 
 [node name="MaskDude" parent="Characters" instance=ExtResource("2_1f664")]
-position = Vector2(609, 951)
+position = Vector2(387, 752)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 visible = false
