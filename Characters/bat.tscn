@@ -88,7 +88,6 @@ tracks/2/keys = {
 [sub_resource type="Animation" id="Animation_btpu4"]
 resource_name = "hit"
 length = 0.5
-loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -133,11 +132,13 @@ _data = {
 "hit": SubResource("Animation_btpu4")
 }
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_f3k1x"]
-radius = 11.0
-height = 40.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_fr0wi"]
+radius = 7.07107
 
-[node name="Bat" type="CharacterBody2D"]
+[node name="Bat" type="CharacterBody2D" groups=["bat"]]
+collision_layer = 4
+collision_mask = 2
+motion_mode = 1
 script = ExtResource("1_7lmv1")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -152,8 +153,9 @@ libraries = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708
-shape = SubResource("CapsuleShape2D_f3k1x")
+shape = SubResource("CircleShape2D_fr0wi")
 
 [node name="RayBat" type="RayCast2D" parent="."]
 target_position = Vector2(-50, 0)
+collision_mask = 2
 collide_with_areas = true

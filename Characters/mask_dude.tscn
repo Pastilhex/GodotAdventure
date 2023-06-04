@@ -345,8 +345,11 @@ _data = {
 }
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ldfdr"]
+radius = 9.0
+height = 28.0
 
-[node name="MaskDude" type="CharacterBody2D"]
+[node name="MaskDude" type="CharacterBody2D" groups=["player"]]
+collision_mask = 6
 script = ExtResource("1_i50p7")
 
 [node name="Texture" type="Sprite2D" parent="."]
@@ -360,6 +363,7 @@ libraries = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2)
 shape = SubResource("CapsuleShape2D_ldfdr")
 
 [node name="Camera2D" type="Camera2D" parent="."]
