@@ -38,8 +38,18 @@ func jump():
 		$Jump.play()
 		jump_count += 1
 		print(jump_count)
-	
 
+func bounce():
+	velocity.y = jump_speed
+
+func check_collision():
+	for i in get_slide_collision_count():
+		var collider = get_slide_collision(i).get_collider()
+		if collider.is_in_group("bat"):
+			if position.y < collider.position.y:
+				if collider.alive():
+					bounce()
+				collider.kill()
 
 func _physics_process(delta):
 	if not is_on_floor():
@@ -53,5 +63,8 @@ func _physics_process(delta):
 	vertical_animation()
 	jump()
 	move_and_slide()
-	
+	check_collision()
 
+func _input(event):
+	if event.is_action_pressed("restart"):
+		get_tree().reload_current_scene()
