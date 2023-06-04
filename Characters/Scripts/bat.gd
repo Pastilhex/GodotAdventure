@@ -9,14 +9,15 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 func _ready():
 	$AnimationPlayer.play("fly")
+	$BatSound.play()
 
 func kill():
 	if state != States.DEAD:
 		state = States.DEAD
 		$AnimationPlayer.play("hit")
 		var tween = get_tree().create_tween()
-		tween.tween_property(self, "position", position - Vector2(0, -30), 0.25)
 		var tween1 = get_tree().create_tween()
+		tween.tween_property(self, "position", position - Vector2(0, -30), 0.25)
 		tween1.tween_property(self, "modulate:a", 0, 0.25)
 		tween.tween_callback(queue_free)
 
@@ -40,5 +41,6 @@ func _physics_process(delta):
 	elif state == States.DEAD:
 		velocity.x = move_toward(velocity.x, 0, (speed * delta) / 0.8)
 		velocity.y += gravity * delta
-		#queue_free()
 	move_and_slide()
+
+

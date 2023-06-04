@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://dobmka1eqvq8i"]
+[gd_scene load_steps=11 format=3 uid="uid://dobmka1eqvq8i"]
 
 [ext_resource type="Texture2D" uid="uid://dkcwa57awekf1" path="res://Assets/Pixel Adventure 2/Enemies/Bat/Idle (46x30).png" id="1_5k2n6"]
 [ext_resource type="Script" path="res://Characters/Scripts/bat.gd" id="1_7lmv1"]
 [ext_resource type="Texture2D" uid="uid://crsda2kf8ynne" path="res://Assets/Pixel Adventure 2/Enemies/Bat/Hit (46x30).png" id="2_rghhc"]
 [ext_resource type="Texture2D" uid="uid://bk6d383ihcp7p" path="res://Assets/Pixel Adventure 2/Enemies/Bat/Flying (46x30).png" id="3_1ft6a"]
+[ext_resource type="AudioStream" uid="uid://c01bvca7tmuxw" path="res://Assets/flapping-39306.mp3" id="5_rklwg"]
 
 [sub_resource type="Animation" id="Animation_7ecat"]
 length = 0.001
@@ -84,6 +85,21 @@ tracks/2/keys = {
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 6]
 }
+tracks/3/type = "audio"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../BatSound")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"clips": [{
+"end_offset": 1.89999,
+"start_offset": 0.0,
+"stream": ExtResource("5_rklwg")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/3/use_blend = true
 
 [sub_resource type="Animation" id="Animation_btpu4"]
 resource_name = "hit"
@@ -163,3 +179,9 @@ collide_with_areas = true
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.05
 one_shot = true
+
+[node name="BatSound" type="AudioStreamPlayer2D" parent="."]
+volume_db = -20.8
+pitch_scale = 1.28
+autoplay = true
+max_distance = 250.0
