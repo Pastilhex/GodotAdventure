@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://pijarwh14ueu"]
+[gd_scene load_steps=22 format=3 uid="uid://pijarwh14ueu"]
 
 [ext_resource type="Script" path="res://Characters/Scripts/mask_dude.gd" id="1_i50p7"]
 [ext_resource type="Texture2D" uid="uid://cwggo32p07k0a" path="res://Assets/Pixel Adventure 1/Free/Main Characters/Mask Dude/Idle (32x32).png" id="1_ny5w1"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://k1f5fc73cv0o" path="res://Assets/Pixel Adventure 1/Free/Main Characters/Mask Dude/Wall Jump (32x32).png" id="6_omqx0"]
 [ext_resource type="AudioStream" uid="uid://cvg4biwxpjlq3" path="res://Assets/toy-button-105724.mp3" id="7_tp272"]
 [ext_resource type="AudioStream" uid="uid://cr0nxyr2mxjpm" path="res://Assets/running-1-6846.mp3" id="9_csb1s"]
+[ext_resource type="PackedScene" uid="uid://dagsvruoorn4c" path="res://Textures/gpu_particles_2d.tscn" id="11_skss5"]
 
 [sub_resource type="Animation" id="Animation_g66p4"]
 length = 0.001
@@ -381,3 +382,9 @@ pitch_scale = 1.01
 stream = ExtResource("7_tp272")
 volume_db = -37.103
 pitch_scale = 1.68
+
+[node name="Dust" parent="." instance=ExtResource("11_skss5")]
+show_behind_parent = true
+position = Vector2(0, 14)
+scale = Vector2(-0.0800005, 0.08)
+amount = 9

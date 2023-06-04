@@ -22,6 +22,7 @@ func horizontal_animation(direction):
 	#Se a direção for diferente de 0 move-se para os lados
 	if direction != 0:
 		velocity.x = direction * SPEED
+		$Dust.emitting = true
 		$Animation.play("run")
 		if direction > 0:
 			get_node("Texture").flip_h = false
@@ -30,13 +31,16 @@ func horizontal_animation(direction):
 	else:
 		$Footsteps.play()
 		velocity.x = move_toward(velocity.x, 0, SPEED)
+		$Dust.emitting = false
 		$Animation.play("idle")
 
 func vertical_animation():
 	#Se a velocidade vertical for diferente de 0 é pq está no ar
 	if velocity.y < 0:
+		$Dust.emitting = false
 		$Animation.play("jump")
 	elif velocity.y > 0:
+		$Dust.emitting = false
 		$Animation.play("fall")
 
 func jump():
