@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://defpfy0ej6n2t"]
+[gd_scene load_steps=30 format=3 uid="uid://defpfy0ej6n2t"]
 
 [ext_resource type="Texture2D" uid="uid://ceuwm85grynbm" path="res://Assets/Pixel Adventure 1/Free/Terrain/Terrain (16x16).png" id="1_hwr0v"]
 [ext_resource type="Script" path="res://Levels/level_01.gd" id="1_nd26v"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://b85s2r8ididae" path="res://Assets/Sunny-land-assets-files/PNG/environment/Props PNG/tree-house.png" id="8_r5dgo"]
 [ext_resource type="Texture2D" uid="uid://d00ijmd8vsft2" path="res://Assets/Sunny-land-assets-files/PNG/environment/Props PNG/wooden-house.png" id="9_fmwai"]
 [ext_resource type="PackedScene" uid="uid://dobmka1eqvq8i" path="res://Characters/bat.tscn" id="11_y5puc"]
+[ext_resource type="PackedScene" uid="uid://dwaqu8lenhf01" path="res://Characters/slime.tscn" id="14_tyjo5"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_x5o0p"]
 polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
@@ -1928,7 +1929,7 @@ bat_margin = Vector2(-50, 0)
 position = Vector2(149, 640)
 
 [node name="MaskDude" parent="Characters" instance=ExtResource("2_1f664")]
-position = Vector2(87, 1013)
+position = Vector2(609, 951)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 visible = false
@@ -1945,5 +1946,8 @@ text = "Hp"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TreeHouseDoor"]
 position = Vector2(1042.5, 427.5)
 shape = SubResource("RectangleShape2D_jkne5")
+
+[node name="Slime" parent="." instance=ExtResource("14_tyjo5")]
+position = Vector2(581, 1001)
 
 [connection signal="body_entered" from="TreeHouseDoor" to="." method="_on_tree_house_door_body_entered"]

@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://dfdi0huosx4sr"]
+[gd_scene load_steps=11 format=3 uid="uid://dfdi0huosx4sr"]
 
 [ext_resource type="Script" path="res://Houses/tree_house.gd" id="1_0awvs"]
 [ext_resource type="Texture2D" uid="uid://ylnj3f58m4ad" path="res://Assets/Sunny-land-assets-files/PNG/environment/layers/tileset.png" id="1_q1vdo"]
 [ext_resource type="Texture2D" uid="uid://c1nvd6et4el8r" path="res://Assets/Sunny-land-assets-files/PNG/environment/layers/props.png" id="2_q20ud"]
 [ext_resource type="PackedScene" uid="uid://pijarwh14ueu" path="res://Characters/mask_dude.tscn" id="3_w5red"]
+[ext_resource type="PackedScene" uid="uid://cwc40mnc653le" path="res://Textures/background.tscn" id="5_krn7c"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_o1khb"]
 texture = ExtResource("1_q1vdo")
@@ -782,6 +783,7 @@ sources/1 = SubResource("TileSetAtlasSource_3m7kp")
 size = Vector2(20, 32)
 
 [node name="TreeHouse" type="Node2D"]
+position = Vector2(128, 128)
 script = ExtResource("1_0awvs")
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -806,5 +808,7 @@ collision_mask = 1
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TreeHouseDoor"]
 position = Vector2(57, 192)
 shape = SubResource("RectangleShape2D_4djcc")
+
+[node name="ParallaxBackground" parent="." instance=ExtResource("5_krn7c")]
 
 [connection signal="body_entered" from="TreeHouseDoor" to="." method="_on_tree_house_door_body_entered"]

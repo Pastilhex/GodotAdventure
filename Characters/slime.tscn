@@ -1,5 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://dwaqu8lenhf01"]
+[gd_scene load_steps=9 format=3 uid="uid://dwaqu8lenhf01"]
 
+[ext_resource type="Script" path="res://Characters/slime.gd" id="1_fxc6d"]
 [ext_resource type="Texture2D" uid="uid://cce8tdxxgb58t" path="res://Assets/Pixel Adventure 2/Enemies/Slime/Idle-Run (44x30).png" id="1_gfqcu"]
 [ext_resource type="Texture2D" uid="uid://c01270m2vds3d" path="res://Assets/Pixel Adventure 2/Enemies/Slime/Hit (44x30).png" id="2_m7tkp"]
 
@@ -85,6 +86,7 @@ tracks/2/keys = {
 [sub_resource type="Animation" id="Animation_g180b"]
 resource_name = "hit"
 length = 0.5
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -129,7 +131,13 @@ _data = {
 "run": SubResource("Animation_o8ghw")
 }
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_kfaob"]
+radius = 13.0
+
 [node name="Slime" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_fxc6d")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_gfqcu")
@@ -141,3 +149,18 @@ libraries = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2)
+shape = SubResource("CircleShape2D_kfaob")
+
+[node name="RaySlime" type="RayCast2D" parent="."]
+target_position = Vector2(-25, 0)
+collision_mask = 2
+collide_with_areas = true
+
+[node name="RayLeft" type="RayCast2D" parent="."]
+position = Vector2(-15, 0)
+target_position = Vector2(0, 20)
+
+[node name="RayRight" type="RayCast2D" parent="."]
+position = Vector2(15, 0)
+target_position = Vector2(0, 20)
