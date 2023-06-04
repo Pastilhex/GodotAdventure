@@ -32,7 +32,7 @@ func alive() -> bool:
 	
 func _physics_process(delta):
 	if state == States.DEFAULT:
-		if not rayright.is_colliding():
+		if not rayright.is_colliding() || not rayleft.is_colliding():
 			move_direction *= -1
 		if rayslime.is_colliding():
 			print("Yess")
