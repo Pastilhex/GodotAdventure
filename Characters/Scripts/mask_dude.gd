@@ -5,10 +5,19 @@ const SPEED = 100.0
 const JUMP_VELOCITY = -400.0
 var jump_count = 0
 var jump_speed = -250
-
-# Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
+
+func _ready():
+#	var tilemap_rect = get_parent().get_parent().get_node("Environment/Terrain/Baseterrain").get_used_rect()
+#	var tilemap_cell_size = get_parent().get_parent().get_node("Environment/Terrain/Baseterrain").cell_quadrant_size
+#	$Camera2D.limit_left = tilemap_rect.position.x * tilemap_cell_size.x
+#	$Camera2D.limit_right = tilemap_rect.end.x * tilemap_cell_size.x
+#	$Camera2D.limit_top = tilemap_rect.position.y * tilemap_cell_size.y
+#	$Camera2D.limit_top = tilemap_rect.end.y * tilemap_cell_size.y
+	pass
+	
+	
 func horizontal_animation(direction):
 	#Se a direção for diferente de 0 move-se para os lados
 	if direction != 0:
@@ -37,7 +46,6 @@ func jump():
 		velocity.y = jump_speed
 		$Jump.play()
 		jump_count += 1
-		print(jump_count)
 
 func bounce():
 	velocity.y = jump_speed
@@ -68,3 +76,6 @@ func _physics_process(delta):
 func _input(event):
 	if event.is_action_pressed("restart"):
 		get_tree().reload_current_scene()
+
+
+	

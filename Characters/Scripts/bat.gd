@@ -6,6 +6,8 @@ var speed = 50.0
 var move_direction = -1
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var raybat := $RayBat as RayCast2D
+@export var bat_margin = Vector2(-25,0)
+
 
 func _ready():
 	$AnimationPlayer.play("fly")
@@ -27,12 +29,10 @@ func alive() -> bool:
 	return false
 
 func _physics_process(delta):
-	
 	if state == States.DEFAULT:
 		if raybat.is_colliding():
+			raybat.target_position = bat_margin * move_direction
 			move_direction *= -1
-			#raybat.scale *= -1 usually altering scale is a bad thing specially with collisions, can cause weird bugs
-			raybat.target_position = Vector2(50, 0) * move_direction
 		if move_direction < 0:
 			$Sprite2D.flip_h = false
 		else:
@@ -42,5 +42,4 @@ func _physics_process(delta):
 		velocity.x = move_toward(velocity.x, 0, (speed * delta) / 0.8)
 		velocity.y += gravity * delta
 	move_and_slide()
-
 
