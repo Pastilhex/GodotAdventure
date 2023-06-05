@@ -5,6 +5,7 @@ var readyToOpen = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$Environment/Wall_Torch/Animated_Fire.play()
 	if Globals.inside_buildings == true:
 		get_node("Characters/MaskDude").position = Globals.player_position
 		Globals.inside_buildings = false

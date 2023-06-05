@@ -1,0 +1,58 @@
+[gd_scene load_steps=11 format=3 uid="uid://be1epvxm58rce"]
+
+[ext_resource type="Texture2D" uid="uid://syouee8hmvo6" path="res://Assets/light.png" id="1_ipyqi"]
+[ext_resource type="Texture2D" uid="uid://bqeu6k20j4o1q" path="res://Assets/walltorch1/walltorchflameani1.png" id="1_n7tq4"]
+[ext_resource type="Texture2D" uid="uid://hmetp8cd4x1v" path="res://Assets/walltorch1/walltorchflameani2.png" id="2_w7cyd"]
+[ext_resource type="Texture2D" uid="uid://bp8weun0lswsg" path="res://Assets/walltorch1/walltorchflameani3.png" id="3_b846b"]
+[ext_resource type="Texture2D" uid="uid://dqr7cl8iakcxw" path="res://Assets/walltorch1/walltorchflameani4.png" id="4_s3o8r"]
+[ext_resource type="Texture2D" uid="uid://ccy04erl1lfb0" path="res://Assets/walltorch1/walltorchflameani5.png" id="5_bksbg"]
+[ext_resource type="Texture2D" uid="uid://dqfpfj7xwp80" path="res://Assets/walltorch1/walltorchflameani6.png" id="6_50opd"]
+[ext_resource type="Texture2D" uid="uid://dp2m33o3wfehx" path="res://Assets/walltorch1/walltorchflameani7.png" id="7_sea0o"]
+[ext_resource type="Texture2D" uid="uid://c4t3mmfgmukaf" path="res://Assets/walltorch1/walltorch4.png" id="8_5js73"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yitxm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_n7tq4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_w7cyd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_b846b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_s3o8r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_bksbg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_50opd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_sea0o")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
+
+[node name="Wall_Torch" type="Node2D"]
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+color = Color(1, 0.501961, 0.172549, 1)
+energy = 0.5
+shadow_enabled = true
+texture = ExtResource("1_ipyqi")
+
+[node name="Animated_Fire" type="AnimatedSprite2D" parent="."]
+position = Vector2(2, -4)
+sprite_frames = SubResource("SpriteFrames_yitxm")
+frame = 2
+frame_progress = 0.00614326
+
+[node name="Torch" type="Sprite2D" parent="."]
+position = Vector2(0, 6)
+texture = ExtResource("8_5js73")
