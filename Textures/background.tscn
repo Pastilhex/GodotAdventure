@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cwc40mnc653le"]
 
-[ext_resource type="Texture2D" uid="uid://yo8irte25vhk" path="res://Assets/free-cartoon-forest-game-backgrounds/PNG/Cartoon_Forest_BG_02/Cartoon_Forest_BG_02.png" id="1_wluep"]
+[ext_resource type="Texture2D" uid="uid://bpesl6qho5swa" path="res://Assets/free-cartoon-forest-game-backgrounds/Layers0/Cartoon_Forest_BG_04.png" id="1_a0mxq"]
 
 [node name="ParallaxBackground" type="ParallaxBackground"]
 
@@ -10,4 +10,4 @@
 modulate = Color(1, 1, 1, 0.45098)
 offset_right = 40.0
 offset_bottom = 40.0
-texture = ExtResource("1_wluep")
+texture = ExtResource("1_a0mxq")
