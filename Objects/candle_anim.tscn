@@ -1,0 +1,49 @@
+[gd_scene load_steps=10 format=3 uid="uid://bi08p06es7s15"]
+
+[ext_resource type="Texture2D" uid="uid://bm8vv4aioaqlw" path="res://Assets/Pirate Bomb/Sprites/7-Objects/6-Candle/1.png" id="1_mshdb"]
+[ext_resource type="Texture2D" uid="uid://b5o3wwro7sl3x" path="res://Assets/Pirate Bomb/Sprites/7-Objects/6-Candle/2.png" id="2_is0yg"]
+[ext_resource type="Texture2D" uid="uid://djup615tb754v" path="res://Assets/Pirate Bomb/Sprites/7-Objects/6-Candle/3.png" id="3_bd034"]
+[ext_resource type="Texture2D" uid="uid://ymd4ersoi006" path="res://Assets/Pirate Bomb/Sprites/7-Objects/6-Candle/4.png" id="4_7f2so"]
+[ext_resource type="Texture2D" uid="uid://bwjwt3rivpm8l" path="res://Assets/Pirate Bomb/Sprites/7-Objects/6-Candle/5.png" id="5_quhum"]
+[ext_resource type="Texture2D" uid="uid://blmcay6vq0b1q" path="res://Assets/Pirate Bomb/Sprites/7-Objects/6-Candle/6.png" id="6_hqnw5"]
+[ext_resource type="Texture2D" uid="uid://cn6a8wfsi8emp" path="res://Assets/Pirate Bomb/Sprites/7-Objects/6-Candle/7.png" id="7_380om"]
+[ext_resource type="Texture2D" uid="uid://bkttp8tjowjxv" path="res://Assets/Pirate Bomb/Sprites/7-Objects/6-Candle/8.png" id="8_h6mlx"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pmqq8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_mshdb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_is0yg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_bd034")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_7f2so")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_quhum")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_hqnw5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_380om")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_h6mlx")
+}],
+"loop": true,
+"name": &"candle",
+"speed": 12.0
+}]
+
+[node name="Candle_Animation" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_pmqq8")
+animation = &"candle"
+frame_progress = 0.0474004
