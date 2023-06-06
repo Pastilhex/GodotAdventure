@@ -20,3 +20,5 @@ func _process(delta):
 
 func _on_tree_house_door_body_entered(body):
 	readyToOpen = true
+
+

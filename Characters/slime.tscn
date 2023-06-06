@@ -1,8 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://dwaqu8lenhf01"]
+[gd_scene load_steps=11 format=3 uid="uid://dwaqu8lenhf01"]
 
 [ext_resource type="Script" path="res://Characters/slime.gd" id="1_fxc6d"]
 [ext_resource type="Texture2D" uid="uid://cce8tdxxgb58t" path="res://Assets/Pixel Adventure 2/Enemies/Slime/Idle-Run (44x30).png" id="1_gfqcu"]
 [ext_resource type="Texture2D" uid="uid://c01270m2vds3d" path="res://Assets/Pixel Adventure 2/Enemies/Slime/Hit (44x30).png" id="2_m7tkp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_37iyi"]
+size = Vector2(32, 20)
 
 [sub_resource type="Animation" id="Animation_1tymm"]
 length = 0.001
@@ -131,13 +134,20 @@ _data = {
 "run": SubResource("Animation_o8ghw")
 }
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_kfaob"]
-radius = 13.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l0cie"]
+size = Vector2(20, 25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0g06q"]
+size = Vector2(36, 18)
 
 [node name="Slime" type="CharacterBody2D"]
 collision_layer = 4
 collision_mask = 2
 script = ExtResource("1_fxc6d")
+
+[node name="SlimeBody" type="CollisionShape2D" parent="."]
+position = Vector2(0, 5)
+shape = SubResource("RectangleShape2D_37iyi")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_gfqcu")
@@ -148,12 +158,14 @@ libraries = {
 "": SubResource("AnimationLibrary_i527m")
 }
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 2)
-shape = SubResource("CircleShape2D_kfaob")
+[node name="SlimeHead" type="Area2D" parent="." groups=["hurtbox"]]
+position = Vector2(0, 2.5)
+
+[node name="TargetArea" type="CollisionShape2D" parent="SlimeHead"]
+shape = SubResource("RectangleShape2D_l0cie")
 
 [node name="RaySlime" type="RayCast2D" parent="."]
-target_position = Vector2(-25, 0)
+target_position = Vector2(25, 0)
 collision_mask = 2
 collide_with_areas = true
 
@@ -167,3 +179,12 @@ collide_with_areas = true
 position = Vector2(15, 0)
 target_position = Vector2(0, 20)
 collision_mask = 2
+
+[node name="Body" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Body"]
+position = Vector2(0, 6)
+shape = SubResource("RectangleShape2D_0g06q")
+
+[connection signal="body_entered" from="SlimeHead" to="." method="_on_slime_head_body_entered"]
+[connection signal="body_entered" from="Body" to="." method="_on_body_body_entered"]

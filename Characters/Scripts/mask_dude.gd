@@ -62,7 +62,7 @@ func bounce():
 func check_collision():
 	for i in get_slide_collision_count():
 		var collider = get_slide_collision(i).get_collider()
-		if collider.is_in_group("bat"):
+		if collider.is_in_group("enemy"):
 			if position.y < collider.position.y:
 				if collider.alive():
 					bounce()
@@ -76,8 +76,10 @@ func _physics_process(delta):
 		if not grounded:
 			grounded = true
 			landing_animation()
+	
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
+	
 	
 	var direction = Input.get_axis("left", "right")
 	horizontal_animation(direction)
