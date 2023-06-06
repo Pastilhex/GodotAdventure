@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://pijarwh14ueu"]
+[gd_scene load_steps=32 format=3 uid="uid://pijarwh14ueu"]
 
 [ext_resource type="Script" path="res://Characters/Scripts/mask_dude.gd" id="1_i50p7"]
 [ext_resource type="Texture2D" uid="uid://cwggo32p07k0a" path="res://Assets/Pixel Adventure 1/Free/Main Characters/Mask Dude/Idle (32x32).png" id="1_ny5w1"]
@@ -413,6 +413,9 @@ scale_min = 0.0
 scale_max = 1.5
 scale_curve = SubResource("CurveTexture_aayfv")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ir0v1"]
+size = Vector2(21, 21)
+
 [node name="MaskDude" type="CharacterBody2D" groups=["player"]]
 collision_mask = 6
 platform_floor_layers = 4294967291
@@ -428,7 +431,7 @@ libraries = {
 "": SubResource("AnimationLibrary_hki6b")
 }
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="BodyCollision" type="CollisionShape2D" parent="."]
 position = Vector2(0, 2)
 shape = SubResource("CapsuleShape2D_ldfdr")
 
@@ -468,3 +471,9 @@ process_material = SubResource("ParticleProcessMaterial_irurc")
 lifetime = 0.5
 one_shot = true
 explosiveness = 1.0
+
+[node name="DamagePlayerArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamagePlayerArea"]
+position = Vector2(0.5, -0.5)
+shape = SubResource("RectangleShape2D_ir0v1")

@@ -1,5 +1,8 @@
 extends CharacterBody2D
 
+#Só para não perder este código
+#yield(get_tree().create_timer(0.2), "timeout")
+#depois do timeout executa a linha seguinte
 
 const SPEED = 100.0
 const JUMP_VELOCITY = -400.0
@@ -11,7 +14,6 @@ var grounded = false
 
 func _ready():
 	pass
-
 
 func horizontal_animation(direction):
 	#Se a direção for diferente de 0 move-se para os lados
@@ -28,7 +30,7 @@ func horizontal_animation(direction):
 		$Dust.emitting = false
 		$Animation.play("idle")
 
-func vertical_animation():
+func vertical_animation(): 
 	#Se a velocidade vertical for diferente de 0 é pq está no ar
 	if velocity.y < 0:
 		$Dust.emitting = false
@@ -86,4 +88,3 @@ func _physics_process(delta):
 func _input(event):
 	if event.is_action_pressed("restart"):
 		get_tree().reload_current_scene()
-

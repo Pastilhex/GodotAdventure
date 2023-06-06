@@ -1,13 +1,13 @@
-[gd_scene load_steps=12 format=3 uid="uid://dwaqu8lenhf01"]
+[gd_scene load_steps=11 format=3 uid="uid://dwaqu8lenhf01"]
 
 [ext_resource type="Script" path="res://Characters/slime.gd" id="1_fxc6d"]
 [ext_resource type="Texture2D" uid="uid://cce8tdxxgb58t" path="res://Assets/Pixel Adventure 2/Enemies/Slime/Idle-Run (44x30).png" id="1_gfqcu"]
 [ext_resource type="Texture2D" uid="uid://c01270m2vds3d" path="res://Assets/Pixel Adventure 2/Enemies/Slime/Hit (44x30).png" id="2_m7tkp"]
 [ext_resource type="AudioStream" uid="uid://dgn32aw2100ys" path="res://Assets/cartoon-jump-6462.mp3" id="4_w8wtf"]
-[ext_resource type="Script" path="res://Characters/HealthComponent.gd" id="5_h7ghs"]
+[ext_resource type="PackedScene" uid="uid://cwkrjijkgqjf0" path="res://Characters/Scripts/hitbox_enemy.tscn" id="5_fr6m7"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_l0cie"]
-size = Vector2(20, 25)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_04rvj"]
+size = Vector2(36, 20)
 
 [sub_resource type="Animation" id="Animation_1tymm"]
 length = 0.001
@@ -136,20 +136,15 @@ _data = {
 "run": SubResource("Animation_o8ghw")
 }
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0g06q"]
-size = Vector2(36, 18)
-
 [node name="Slime" type="CharacterBody2D"]
 collision_layer = 4
 collision_mask = 2
 script = ExtResource("1_fxc6d")
 slime_margin = Vector2(-30, 0)
 
-[node name="SlimeHead" type="Area2D" parent="." groups=["hurtbox"]]
-position = Vector2(0, 2.5)
-
-[node name="TargetArea" type="CollisionShape2D" parent="SlimeHead"]
-shape = SubResource("RectangleShape2D_l0cie")
+[node name="SlimeBody" type="CollisionShape2D" parent="."]
+position = Vector2(0, 5)
+shape = SubResource("RectangleShape2D_04rvj")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_gfqcu")
@@ -177,12 +172,8 @@ stream = ExtResource("4_w8wtf")
 volume_db = -5.701
 pitch_scale = 1.5
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 6)
-shape = SubResource("RectangleShape2D_0g06q")
+[node name="HitboxEnemy" parent="." instance=ExtResource("5_fr6m7")]
+position = Vector2(0, -8)
+scale = Vector2(1.2, 1)
 
-[node name="HealthComponent" type="Node2D" parent="."]
-script = ExtResource("5_h7ghs")
-MAX_HEALTH = null
-
-[connection signal="body_entered" from="SlimeHead" to="." method="_on_slime_head_body_entered"]
+[connection signal="body_entered" from="HitboxEnemy" to="." method="_on_hitbox_enemy_body_entered"]

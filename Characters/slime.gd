@@ -27,6 +27,7 @@ func kill():
 		tween.tween_property(self, "position", position - Vector2(0, -10), 0.25)
 		tween1.tween_property(self, "modulate:a", 0, 0.25)
 		tween.tween_callback(queue_free)
+		get_node("HitboxEnemy/CollisionShape2D").set_deferred("disabled", true)
 
 func alive() -> bool:
 	if state != States.DEAD:
@@ -39,7 +40,6 @@ func _physics_process(delta):
 	if state == States.DEFAULT:
 		velocity.x = speed * move_direction
 		if not rayleft.is_colliding() || rayslime.is_colliding():
-			print("Collided")
 			rayslime.target_position = slime_margin * move_direction
 			move_direction *= -1
 			rayleft.position *= -1
@@ -53,7 +53,7 @@ func _physics_process(delta):
 	move_and_slide()
 
 
-func _on_slime_head_body_entered(body):
+
+func _on_hitbox_enemy_body_entered(body):
 	if body.is_in_group("player"):
 		kill()
-
