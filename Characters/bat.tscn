@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://dobmka1eqvq8i"]
+[gd_scene load_steps=12 format=3 uid="uid://dobmka1eqvq8i"]
 
 [ext_resource type="Texture2D" uid="uid://dkcwa57awekf1" path="res://Assets/Pixel Adventure 2/Enemies/Bat/Idle (46x30).png" id="1_5k2n6"]
 [ext_resource type="Script" path="res://Characters/Scripts/bat.gd" id="1_7lmv1"]
 [ext_resource type="Texture2D" uid="uid://crsda2kf8ynne" path="res://Assets/Pixel Adventure 2/Enemies/Bat/Hit (46x30).png" id="2_rghhc"]
 [ext_resource type="Texture2D" uid="uid://bk6d383ihcp7p" path="res://Assets/Pixel Adventure 2/Enemies/Bat/Flying (46x30).png" id="3_1ft6a"]
 [ext_resource type="AudioStream" uid="uid://c01bvca7tmuxw" path="res://Assets/flapping-39306.mp3" id="5_rklwg"]
+[ext_resource type="AudioStream" uid="uid://dgn32aw2100ys" path="res://Assets/cartoon-jump-6462.mp3" id="6_jig58"]
 
 [sub_resource type="Animation" id="Animation_7ecat"]
 length = 0.001
@@ -181,3 +182,8 @@ volume_db = -20.8
 pitch_scale = 1.28
 autoplay = true
 max_distance = 250.0
+
+[node name="Dead" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_jig58")
+volume_db = -5.701
+pitch_scale = 1.5

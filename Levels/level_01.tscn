@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://defpfy0ej6n2t"]
+[gd_scene load_steps=30 format=3 uid="uid://defpfy0ej6n2t"]
 
 [ext_resource type="Texture2D" uid="uid://ceuwm85grynbm" path="res://Assets/Pixel Adventure 1/Free/Terrain/Terrain (16x16).png" id="1_hwr0v"]
 [ext_resource type="Script" path="res://Levels/level_01.gd" id="1_nd26v"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://d00ijmd8vsft2" path="res://Assets/Sunny-land-assets-files/PNG/environment/Props PNG/wooden-house.png" id="9_fmwai"]
 [ext_resource type="PackedScene" uid="uid://dobmka1eqvq8i" path="res://Characters/bat.tscn" id="11_y5puc"]
 [ext_resource type="PackedScene" uid="uid://dwaqu8lenhf01" path="res://Characters/slime.tscn" id="14_tyjo5"]
+[ext_resource type="PackedScene" uid="uid://bs07uipqxmb5b" path="res://Objects/spikes.tscn" id="16_502gf"]
 
 [sub_resource type="FontFile" id="FontFile_d4mrg"]
 face_index = null
@@ -1899,6 +1900,7 @@ size = Vector2(21, 33)
 script = ExtResource("1_nd26v")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="Label" type="Label" parent="CanvasLayer"]
 offset_left = 16.0
@@ -1958,21 +1960,44 @@ bat_margin = Vector2(-50, 0)
 [node name="Bat3" parent="Characters" groups=["enemy"] instance=ExtResource("11_y5puc")]
 position = Vector2(149, 640)
 
+[node name="Bat4" parent="Characters" groups=["enemy"] instance=ExtResource("11_y5puc")]
+position = Vector2(1389, 691)
+
+[node name="Bat5" parent="Characters" groups=["enemy"] instance=ExtResource("11_y5puc")]
+position = Vector2(1698, 809)
+
 [node name="MaskDude" parent="Characters" instance=ExtResource("2_1f664")]
-position = Vector2(603, 948)
+position = Vector2(361, 761)
 
 [node name="Slime" parent="Characters" groups=["enemy"] instance=ExtResource("14_tyjo5")]
-position = Vector2(581, 1001)
+position = Vector2(581, 1002)
+scale = Vector2(0.9, 0.9)
 
 [node name="Slime2" parent="Characters" groups=["enemy"] instance=ExtResource("14_tyjo5")]
-position = Vector2(1604, 1021)
-scale = Vector2(0.727, 0.727)
-speed = 50.0
+position = Vector2(1425, 1018)
+scale = Vector2(0.9, 0.9)
+
+[node name="Slime3" parent="Characters" groups=["enemy"] instance=ExtResource("14_tyjo5")]
+position = Vector2(1504, 475)
+scale = Vector2(0.9, 0.9)
+
+[node name="Slime4" parent="Characters" groups=["enemy"] instance=ExtResource("14_tyjo5")]
+position = Vector2(317, 682)
+scale = Vector2(0.9, 0.9)
 
 [node name="TreeHouseDoor" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TreeHouseDoor"]
 position = Vector2(1042.5, 427.5)
 shape = SubResource("RectangleShape2D_jkne5")
+
+[node name="Spikes" parent="." instance=ExtResource("16_502gf")]
+position = Vector2(407, 771)
+
+[node name="Spikes2" parent="." instance=ExtResource("16_502gf")]
+position = Vector2(1464, 850)
+
+[node name="Spikes3" parent="." instance=ExtResource("16_502gf")]
+position = Vector2(1664, 850)
 
 [connection signal="body_entered" from="TreeHouseDoor" to="." method="_on_tree_house_door_body_entered"]

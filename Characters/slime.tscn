@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://dwaqu8lenhf01"]
+[gd_scene load_steps=12 format=3 uid="uid://dwaqu8lenhf01"]
 
 [ext_resource type="Script" path="res://Characters/slime.gd" id="1_fxc6d"]
 [ext_resource type="Texture2D" uid="uid://cce8tdxxgb58t" path="res://Assets/Pixel Adventure 2/Enemies/Slime/Idle-Run (44x30).png" id="1_gfqcu"]
 [ext_resource type="Texture2D" uid="uid://c01270m2vds3d" path="res://Assets/Pixel Adventure 2/Enemies/Slime/Hit (44x30).png" id="2_m7tkp"]
+[ext_resource type="AudioStream" uid="uid://dgn32aw2100ys" path="res://Assets/cartoon-jump-6462.mp3" id="4_w8wtf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_37iyi"]
 size = Vector2(32, 20)
@@ -144,6 +145,7 @@ size = Vector2(36, 18)
 collision_layer = 4
 collision_mask = 2
 script = ExtResource("1_fxc6d")
+slime_margin = Vector2(-30, 0)
 
 [node name="SlimeBody" type="CollisionShape2D" parent="."]
 position = Vector2(0, 5)
@@ -154,6 +156,7 @@ texture = ExtResource("1_gfqcu")
 hframes = 10
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+speed_scale = 1.6
 libraries = {
 "": SubResource("AnimationLibrary_i527m")
 }
@@ -165,26 +168,26 @@ position = Vector2(0, 2.5)
 shape = SubResource("RectangleShape2D_l0cie")
 
 [node name="RaySlime" type="RayCast2D" parent="."]
-target_position = Vector2(25, 0)
+target_position = Vector2(-30, 0)
 collision_mask = 2
 collide_with_areas = true
 
 [node name="RayLeft" type="RayCast2D" parent="."]
-position = Vector2(-15, 0)
+position = Vector2(-20, 0)
 target_position = Vector2(0, 20)
 collision_mask = 2
 collide_with_areas = true
-
-[node name="RayRight" type="RayCast2D" parent="."]
-position = Vector2(15, 0)
-target_position = Vector2(0, 20)
-collision_mask = 2
 
 [node name="Body" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Body"]
 position = Vector2(0, 6)
 shape = SubResource("RectangleShape2D_0g06q")
+
+[node name="Dead" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_w8wtf")
+volume_db = -5.701
+pitch_scale = 1.5
 
 [connection signal="body_entered" from="SlimeHead" to="." method="_on_slime_head_body_entered"]
 [connection signal="body_entered" from="Body" to="." method="_on_body_body_entered"]

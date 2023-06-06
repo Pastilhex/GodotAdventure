@@ -10,13 +10,8 @@ var grounded = false
 
 
 func _ready():
-#	var tilemap_rect = get_parent().get_parent().get_node("Environment/Terrain/Baseterrain").get_used_rect()
-#	var tilemap_cell_size = get_parent().get_parent().get_node("Environment/Terrain/Baseterrain").cell_quadrant_size
-#	$Camera2D.limit_left = tilemap_rect.position.x * tilemap_cell_size.x
-#	$Camera2D.limit_right = tilemap_rect.end.x * tilemap_cell_size.x
-#	$Camera2D.limit_top = tilemap_rect.position.y * tilemap_cell_size.y
-#	$Camera2D.limit_top = tilemap_rect.end.y * tilemap_cell_size.y
 	pass
+
 
 func horizontal_animation(direction):
 	#Se a direção for diferente de 0 move-se para os lados

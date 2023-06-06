@@ -1,5 +1,6 @@
-[gd_scene load_steps=11 format=3 uid="uid://be1epvxm58rce"]
+[gd_scene load_steps=12 format=3 uid="uid://be1epvxm58rce"]
 
+[ext_resource type="Script" path="res://Objects/wall_torch.gd" id="1_4ay0i"]
 [ext_resource type="Texture2D" uid="uid://syouee8hmvo6" path="res://Assets/light.png" id="1_ipyqi"]
 [ext_resource type="Texture2D" uid="uid://bqeu6k20j4o1q" path="res://Assets/walltorch1/walltorchflameani1.png" id="1_n7tq4"]
 [ext_resource type="Texture2D" uid="uid://hmetp8cd4x1v" path="res://Assets/walltorch1/walltorchflameani2.png" id="2_w7cyd"]
@@ -40,8 +41,10 @@ animations = [{
 }]
 
 [node name="Wall_Torch" type="Node2D"]
+script = ExtResource("1_4ay0i")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
+visible = false
 color = Color(1, 0.501961, 0.172549, 1)
 energy = 0.5
 shadow_enabled = true
