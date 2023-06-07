@@ -1,10 +1,10 @@
 [gd_scene load_steps=11 format=3 uid="uid://dwaqu8lenhf01"]
 
-[ext_resource type="Script" path="res://Characters/slime.gd" id="1_fxc6d"]
+[ext_resource type="Script" path="res://Characters/Scripts/slime.gd" id="1_fxc6d"]
 [ext_resource type="Texture2D" uid="uid://cce8tdxxgb58t" path="res://Assets/Pixel Adventure 2/Enemies/Slime/Idle-Run (44x30).png" id="1_gfqcu"]
 [ext_resource type="Texture2D" uid="uid://c01270m2vds3d" path="res://Assets/Pixel Adventure 2/Enemies/Slime/Hit (44x30).png" id="2_m7tkp"]
 [ext_resource type="AudioStream" uid="uid://dgn32aw2100ys" path="res://Assets/cartoon-jump-6462.mp3" id="4_w8wtf"]
-[ext_resource type="PackedScene" uid="uid://cwkrjijkgqjf0" path="res://Characters/Scripts/hitbox_enemy.tscn" id="5_fr6m7"]
+[ext_resource type="PackedScene" uid="uid://cwkrjijkgqjf0" path="res://Characters/hitbox_enemy.tscn" id="5_fr6m7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_04rvj"]
 size = Vector2(36, 20)

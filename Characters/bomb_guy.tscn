@@ -1,0 +1,230 @@
+[gd_scene load_steps=31 format=3 uid="uid://d3rkepfvqoyfw"]
+
+[ext_resource type="Script" path="res://Characters/Scripts/bomb_guy.gd" id="1_2ew3c"]
+[ext_resource type="Texture2D" uid="uid://bua0w1oxcppaj" path="res://Assets/Pirate Bomb/Sprites/1-Player-Bomb Guy/7-Hit/1.png" id="8_xj6ss"]
+[ext_resource type="Texture2D" uid="uid://cxlht1ped1n5l" path="res://Assets/Pirate Bomb/Sprites/1-Player-Bomb Guy/7-Hit/2.png" id="9_nmv6o"]
+[ext_resource type="Texture2D" uid="uid://cs1ldvo2nae7g" path="res://Assets/Pirate Bomb/Sprites/1-Player-Bomb Guy/7-Hit/3.png" id="10_igsvn"]
+[ext_resource type="Texture2D" uid="uid://cj5rcgcc0cemg" path="res://Assets/Pirate Bomb/Sprites/1-Player-Bomb Guy/7-Hit/4.png" id="11_mdsts"]
+[ext_resource type="Texture2D" uid="uid://bf8xwcbpsxcms" path="res://Assets/Pirate Bomb/Sprites/1-Player-Bomb Guy/7-Hit/5.png" id="12_knrxi"]
+[ext_resource type="Texture2D" uid="uid://inuehph7wqto" path="res://Assets/Pirate Bomb/Sprites/1-Player-Bomb Guy/7-Hit/6.png" id="13_251vn"]
+[ext_resource type="Texture2D" uid="uid://dh5rruyytehe3" path="res://Assets/Pirate Bomb/Sprites/1-Player-Bomb Guy/7-Hit/7.png" id="14_ovn4q"]
+[ext_resource type="Texture2D" uid="uid://db8lw14b02848" path="res://Assets/Pirate Bomb/Sprites/1-Player-Bomb Guy/7-Hit/8.png" id="15_80tfo"]
+[ext_resource type="Texture2D" uid="uid://1bywnu5xk5es" path="res://Assets/Pirate Bomb/Sprites/1-Player-Bomb Guy/2-Run/1.png" id="27_pwylr"]
+[ext_resource type="Texture2D" uid="uid://v5xw4l3ju183" path="res://Assets/Pirate Bomb/Sprites/1-Player-Bomb Guy/2-Run/2.png" id="28_ilm5w"]
+[ext_resource type="Texture2D" uid="uid://c1yubsry8feqk" path="res://Assets/Pirate Bomb/Sprites/1-Player-Bomb Guy/2-Run/3.png" id="29_jt41j"]
+[ext_resource type="Texture2D" uid="uid://doo3mfkjna1su" path="res://Assets/Pirate Bomb/Sprites/1-Player-Bomb Guy/2-Run/4.png" id="30_axb7i"]
+[ext_resource type="Texture2D" uid="uid://b6fmeqa40x7nb" path="res://Assets/Pirate Bomb/Sprites/1-Player-Bomb Guy/2-Run/5.png" id="31_jcg2m"]
+[ext_resource type="Texture2D" uid="uid://cu428gdesloiw" path="res://Assets/Pirate Bomb/Sprites/1-Player-Bomb Guy/2-Run/6.png" id="32_5blru"]
+[ext_resource type="Texture2D" uid="uid://dbk2lguot2iq2" path="res://Assets/Pirate Bomb/Sprites/1-Player-Bomb Guy/2-Run/7.png" id="33_wrk16"]
+[ext_resource type="Texture2D" uid="uid://duyrd2q44p67j" path="res://Assets/Pirate Bomb/Sprites/1-Player-Bomb Guy/2-Run/8.png" id="34_xsfv7"]
+[ext_resource type="Texture2D" uid="uid://diqpq7x3r0rmw" path="res://Assets/Pirate Bomb/Sprites/1-Player-Bomb Guy/2-Run/9.png" id="35_vcwdj"]
+[ext_resource type="Texture2D" uid="uid://06ngqgpi1iw7" path="res://Assets/Pirate Bomb/Sprites/1-Player-Bomb Guy/2-Run/10.png" id="36_wqaup"]
+[ext_resource type="Texture2D" uid="uid://cyttieq7hcqo2" path="res://Assets/Pirate Bomb/Sprites/1-Player-Bomb Guy/2-Run/11.png" id="37_3kcgw"]
+[ext_resource type="Texture2D" uid="uid://ehlnq8njvll" path="res://Assets/Pirate Bomb/Sprites/1-Player-Bomb Guy/2-Run/12.png" id="38_jm55f"]
+[ext_resource type="Texture2D" uid="uid://tx0dihp4u27w" path="res://Assets/Pirate Bomb/Sprites/1-Player-Bomb Guy/2-Run/13.png" id="39_fp32m"]
+[ext_resource type="Texture2D" uid="uid://cnml2jg0r2rxh" path="res://Assets/Pirate Bomb/Sprites/1-Player-Bomb Guy/2-Run/14.png" id="40_x4ta6"]
+[ext_resource type="PackedScene" uid="uid://cwkrjijkgqjf0" path="res://Characters/hitbox_enemy.tscn" id="41_qp1uy"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_382bx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_xj6ss")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_nmv6o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_igsvn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_mdsts")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_knrxi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_251vn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_ovn4q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_80tfo")
+}],
+"loop": false,
+"name": &"hit",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("27_pwylr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_ilm5w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_jt41j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_axb7i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_jcg2m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_5blru")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_wrk16")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_xsfv7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35_vcwdj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36_wqaup")
+}, {
+"duration": 1.0,
+"texture": ExtResource("37_3kcgw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("38_jm55f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("39_fp32m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("40_x4ta6")
+}],
+"loop": true,
+"name": &"run",
+"speed": 12.0
+}]
+
+[sub_resource type="Animation" id="Animation_nwdc8"]
+resource_name = "hit"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimationSprites:sprite_frames")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("SpriteFrames_382bx")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimationSprites:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"hit"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimationSprites:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
+}
+
+[sub_resource type="Animation" id="Animation_7w3ko"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimationSprites:sprite_frames")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("SpriteFrames_382bx")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimationSprites:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"hit"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimationSprites:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qhm3x"]
+_data = {
+"RESET": SubResource("Animation_7w3ko"),
+"hit": SubResource("Animation_nwdc8")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s7vgo"]
+size = Vector2(34, 39)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rtbs4"]
+size = Vector2(21.6667, 9)
+
+[node name="BombGuy" type="CharacterBody2D"]
+collision_layer = 4
+script = ExtResource("1_2ew3c")
+ray_margin = Vector2(100, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_qhm3x")
+}
+
+[node name="AnimationSprites" type="AnimatedSprite2D" parent="."]
+position = Vector2(-3, 0)
+sprite_frames = SubResource("SpriteFrames_382bx")
+animation = &"hit"
+speed_scale = 1.9
+
+[node name="BodyCollisionShape" type="CollisionShape2D" parent="."]
+position = Vector2(0, 6.5)
+shape = SubResource("RectangleShape2D_s7vgo")
+
+[node name="HitboxEnemy" parent="." instance=ExtResource("41_qp1uy")]
+position = Vector2(-2, -19)
+scale = Vector2(1.2, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxEnemy"]
+position = Vector2(1.66667, 1.5)
+shape = SubResource("RectangleShape2D_rtbs4")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(50, 0)
+collision_mask = 2
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="body_entered" from="HitboxEnemy" to="." method="_on_hitbox_enemy_body_entered"]

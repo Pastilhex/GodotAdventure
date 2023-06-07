@@ -1,8 +1,5 @@
 extends CharacterBody2D
 
-#Só para não perder este código
-#yield(get_tree().create_timer(0.2), "timeout")
-#depois do timeout executa a linha seguinte
 
 const SPEED = 100.0
 const JUMP_VELOCITY = -400.0
@@ -75,7 +72,10 @@ func _physics_process(delta):
 			landing_animation()
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
-	#print(Globals.player_health)
+	
+	print("MaskDude: ", self.get_last_motion())
+	print("Position: ", self.get_position_delta())
+	
 	
 	
 	var direction = Input.get_axis("left", "right")
@@ -93,12 +93,10 @@ func _input(event):
 
 func _on_damage_player_area_body_entered(body):
 	if body.is_in_group("enemy"):
-		print("Enemy Touch")
 		Globals.player_health -= 2;
 		bounce()
 		print(Globals.player_health)
 	elif body.is_in_group("traps"):
-		print("Tap Touch")
 		Globals.player_health -= 1;
 		bounce()
 		print(Globals.player_health)

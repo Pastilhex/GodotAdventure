@@ -374,9 +374,8 @@ _data = {
 "wall_jump": SubResource("Animation_573sk")
 }
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ldfdr"]
-radius = 9.0
-height = 28.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_axcn6"]
+size = Vector2(16, 20)
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_4ehhv"]
 streams_count = 5
@@ -414,7 +413,7 @@ scale_max = 1.5
 scale_curve = SubResource("CurveTexture_aayfv")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ir0v1"]
-size = Vector2(21, 21)
+size = Vector2(22, 23)
 
 [node name="MaskDude" type="CharacterBody2D" groups=["player"]]
 collision_mask = 6
@@ -432,8 +431,8 @@ libraries = {
 }
 
 [node name="BodyCollision" type="CollisionShape2D" parent="."]
-position = Vector2(0, 2)
-shape = SubResource("CapsuleShape2D_ldfdr")
+position = Vector2(1, 5)
+shape = SubResource("RectangleShape2D_axcn6")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(1.5, 1.5)
@@ -476,7 +475,7 @@ explosiveness = 1.0
 collision_mask = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DamagePlayerArea"]
-position = Vector2(0.5, -0.5)
+position = Vector2(1, 0.5)
 shape = SubResource("RectangleShape2D_ir0v1")
 
 [connection signal="body_entered" from="DamagePlayerArea" to="." method="_on_damage_player_area_body_entered"]
