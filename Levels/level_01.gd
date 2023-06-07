@@ -11,7 +11,7 @@ func _ready():
 
 
 func _process(delta):
-	if Input.is_action_pressed("enter") && readyToOpen == true:
+	if Input.is_action_just_pressed("enter") && readyToOpen == true:
 		Globals.set_data(player.position.x, player.position.y)
 		Globals.stage = "res://Levels/level_01.tscn"
 		get_tree().change_scene_to_file("res://Houses/tree_house.tscn")
@@ -21,3 +21,5 @@ func _on_tree_house_door_body_entered(body):
 	readyToOpen = true
 
 
+func _on_tree_house_door_body_exited(body):
+		readyToOpen = true

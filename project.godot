@@ -69,7 +69,7 @@ enter={
 2d_render/layer_5="Traps"
 2d_physics/layer_1="player"
 2d_physics/layer_2="static block"
-2d_physics/layer_3="bat"
+2d_physics/layer_3="enemies"
 
 [rendering]
 

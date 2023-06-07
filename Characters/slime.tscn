@@ -145,6 +145,7 @@ slime_margin = Vector2(-30, 0)
 [node name="SlimeBody" type="CollisionShape2D" parent="."]
 position = Vector2(0, 5)
 shape = SubResource("RectangleShape2D_04rvj")
+debug_color = Color(0, 0.6, 0.701961, 0.419608)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_gfqcu")

@@ -473,7 +473,10 @@ one_shot = true
 explosiveness = 1.0
 
 [node name="DamagePlayerArea" type="Area2D" parent="."]
+collision_mask = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DamagePlayerArea"]
 position = Vector2(0.5, -0.5)
 shape = SubResource("RectangleShape2D_ir0v1")
+
+[connection signal="body_entered" from="DamagePlayerArea" to="." method="_on_damage_player_area_body_entered"]

@@ -14,6 +14,7 @@ func _process(delta):
 
 func _on_body_entered(body):
 	if body.is_in_group("player"):
-		print("Spike Hit")
+		Globals.player_health -= 1
+		print(Globals.player_health)
 	pass # Replace with function body.
 
