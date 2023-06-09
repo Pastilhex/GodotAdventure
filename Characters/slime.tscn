@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dwaqu8lenhf01"]
+[gd_scene load_steps=12 format=3 uid="uid://dwaqu8lenhf01"]
 
 [ext_resource type="Script" path="res://Characters/Scripts/slime.gd" id="1_fxc6d"]
 [ext_resource type="Texture2D" uid="uid://cce8tdxxgb58t" path="res://Assets/Pixel Adventure 2/Enemies/Slime/Idle-Run (44x30).png" id="1_gfqcu"]
@@ -136,6 +136,9 @@ _data = {
 "run": SubResource("Animation_o8ghw")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_08keb"]
+size = Vector2(20, 6)
+
 [node name="Slime" type="CharacterBody2D"]
 collision_layer = 4
 collision_mask = 2
@@ -176,5 +179,8 @@ pitch_scale = 1.5
 [node name="HitboxEnemy" parent="." instance=ExtResource("5_fr6m7")]
 position = Vector2(0, -8)
 scale = Vector2(1.2, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxEnemy"]
+shape = SubResource("RectangleShape2D_08keb")
 
 [connection signal="body_entered" from="HitboxEnemy" to="." method="_on_hitbox_enemy_body_entered"]

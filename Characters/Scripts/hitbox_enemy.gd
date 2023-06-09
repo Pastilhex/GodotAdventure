@@ -4,7 +4,11 @@ extends Area2D
  
 func _on_body_entered(body):
 	if body.name == "MaskDude":
-		print("Bateu bateu")
 		body.velocity.y = bounce
-		owner.bomb_guy_anim.play("hit")
-	
+		owner.get_node("AnimationPlayer").play("hit")
+		var tween = get_tree().create_tween()
+		var tween1 = get_tree().create_tween()
+		tween.tween_property(owner, "position", owner.position - Vector2(0, -20), 0.25)
+		tween1.tween_property(owner, "modulate:a", 0, 0.25)
+		tween.tween_callback(owner.queue_free)
+

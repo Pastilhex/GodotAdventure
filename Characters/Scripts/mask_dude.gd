@@ -53,14 +53,6 @@ func jump():
 func bounce():
 	velocity.y = jump_speed
 
-func check_collision():
-	for i in get_slide_collision_count():
-		var collider = get_slide_collision(i).get_collider()
-		if collider.is_in_group("enemy"):
-			if position.y < collider.position.y:
-				if collider.alive():
-					bounce()
-				collider.kill()
 
 func _physics_process(delta):
 	if not is_on_floor():
@@ -73,8 +65,7 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 	
-	print("MaskDude: ", self.get_last_motion())
-	print("Position: ", self.get_position_delta())
+
 	
 	
 	
@@ -83,7 +74,6 @@ func _physics_process(delta):
 	vertical_animation()
 	jump()
 	move_and_slide()
-	check_collision()
 
 
 func _input(event):

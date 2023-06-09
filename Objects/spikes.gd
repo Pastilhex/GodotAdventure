@@ -1,5 +1,6 @@
 extends Area2D
 
+@export var bounce = -250
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -14,6 +15,7 @@ func _process(delta):
 
 func _on_body_entered(body):
 	if body.is_in_group("player"):
+		body.velocity.y = bounce
 		Globals.player_health -= 1
 		print(Globals.player_health)
 	pass # Replace with function body.

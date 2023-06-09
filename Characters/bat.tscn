@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dobmka1eqvq8i"]
+[gd_scene load_steps=14 format=3 uid="uid://dobmka1eqvq8i"]
 
 [ext_resource type="Texture2D" uid="uid://dkcwa57awekf1" path="res://Assets/Pixel Adventure 2/Enemies/Bat/Idle (46x30).png" id="1_5k2n6"]
 [ext_resource type="Script" path="res://Characters/Scripts/bat.gd" id="1_7lmv1"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bk6d383ihcp7p" path="res://Assets/Pixel Adventure 2/Enemies/Bat/Flying (46x30).png" id="3_1ft6a"]
 [ext_resource type="AudioStream" uid="uid://c01bvca7tmuxw" path="res://Assets/flapping-39306.mp3" id="5_rklwg"]
 [ext_resource type="AudioStream" uid="uid://dgn32aw2100ys" path="res://Assets/cartoon-jump-6462.mp3" id="6_jig58"]
+[ext_resource type="PackedScene" uid="uid://cwkrjijkgqjf0" path="res://Characters/hitbox_enemy.tscn" id="7_rsd50"]
 
 [sub_resource type="Animation" id="Animation_7ecat"]
 length = 0.001
@@ -152,6 +153,10 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_fr0wi"]
 radius = 7.07107
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qio7i"]
+radius = 4.0
+height = 14.0
+
 [node name="Bat" type="CharacterBody2D" groups=["Enemies"]]
 collision_layer = 4
 collision_mask = 2
@@ -187,3 +192,10 @@ max_distance = 250.0
 stream = ExtResource("6_jig58")
 volume_db = -5.701
 pitch_scale = 1.5
+
+[node name="HitboxEnemy" parent="." instance=ExtResource("7_rsd50")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxEnemy"]
+position = Vector2(0, -9)
+rotation = 1.57079
+shape = SubResource("CapsuleShape2D_qio7i")
