@@ -1,17 +1,14 @@
 extends CharacterBody2D
 
 
-const speed = 50.0
-var direction = 1
-
 @onready var raycast := $RayCast2D as RayCast2D
 @onready var bomb_guy_anim := $AnimationPlayer as AnimationPlayer
 @export var ray_margin = Vector2(50,0)
-
-# Get the gravity from the project settings to be synced with RigidBody nodes.
+const speed = 50.0
+var direction = 1
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
-
-
+var player = null
+var bomb_guy_chase = false
 
 func _physics_process(delta):
 	# Add the gravity.
@@ -34,6 +31,3 @@ func _physics_process(delta):
 		$AnimationSprites.flip_h = true
 		
 	move_and_slide()
-
-
-

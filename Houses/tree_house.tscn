@@ -1555,7 +1555,7 @@ shadow_filter_smooth = 5.0
 texture = ExtResource("15_6ab0k")
 
 [node name="MaskDude" parent="." instance=ExtResource("3_w5red")]
-position = Vector2(324, 416)
+position = Vector2(212, 480)
 collision_mask = 2
 
 [node name="TreeHouseDoor" type="Area2D" parent="."]
@@ -1574,9 +1574,6 @@ color = Color(0.760784, 0.760784, 0.760784, 1)
 position = Vector2(418, 481)
 scale = Vector2(0.5, 0.5)
 collision_mask = 3
-
-[node name="RayCast2D" parent="BombGuy" index="3"]
-collision_mask = 2
 
 [connection signal="body_entered" from="TreeHouseDoor" to="." method="_on_tree_house_door_body_entered"]
 

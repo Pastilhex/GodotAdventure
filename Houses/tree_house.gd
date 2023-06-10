@@ -8,7 +8,7 @@ func _ready():
 	Globals.inside_buildings = true
 
 
-func _process(delta):
+func _process(_delta):
 	if Input.is_action_pressed("enter") && readyToOpen == true:
 		get_tree().change_scene_to_file(Globals.stage)
 	$Candle.play("candle")

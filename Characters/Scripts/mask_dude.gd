@@ -1,21 +1,19 @@
 extends CharacterBody2D
 
-
-const SPEED = 100.0
-const JUMP_VELOCITY = -400.0
+@export var health = 100
+@export var knockback_power = 400
+const speed = 100.0
+const jump_velocity = -400.0
 var jump_count = 0
 var jump_speed = -250
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var grounded = false
-
-
-func _ready():
-	pass
+signal update_health()
 
 func horizontal_animation(direction):
 	#Se a direção for diferente de 0 move-se para os lados
 	if direction != 0:
-		velocity.x = direction * SPEED
+		velocity.x = direction * speed
 		$Dust.emitting = true
 		$Animation.play("run")
 		if direction > 0:
@@ -23,7 +21,7 @@ func horizontal_animation(direction):
 		else:
 			get_node("Texture").flip_h = true
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
+		velocity.x = move_toward(velocity.x, 0, speed)
 		$Dust.emitting = false
 		$Animation.play("idle")
 
@@ -53,6 +51,8 @@ func jump():
 func bounce():
 	velocity.y = jump_speed
 
+func _ready():
+	Globals.player_health = health
 
 func _physics_process(delta):
 	if not is_on_floor():
@@ -63,30 +63,34 @@ func _physics_process(delta):
 			grounded = true
 			landing_animation()
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
-	
-
-	
-	
-	
+		velocity.y = jump_velocity
 	var direction = Input.get_axis("left", "right")
 	horizontal_animation(direction)
 	vertical_animation()
 	jump()
 	move_and_slide()
 
-
 func _input(event):
 	if event.is_action_pressed("restart"):
 		get_tree().reload_current_scene()
 
+func health_update():
+	emit_signal("update_health")
+
+func knockback(enemyVelocity: Vector2):
+	var knockback_direction = (enemyVelocity - velocity).normalized() * knockback_power
+	velocity = knockback_direction
+	move_and_slide()
 
 func _on_damage_player_area_body_entered(body):
+	print(body.name)
 	if body.is_in_group("enemy"):
-		Globals.player_health -= 2;
-		bounce()
-		print(Globals.player_health)
-	elif body.is_in_group("traps"):
-		Globals.player_health -= 1;
-		bounce()
-		print(Globals.player_health)
+		if not body.is_in_group("flyers"):
+			knockback(body.velocity)
+		Globals.player_health =  Globals.player_health - 10
+		if Globals.player_health > 0:
+			health_update()
+		else:
+			queue_free()
+			
+			get_tree().reload_current_scene()

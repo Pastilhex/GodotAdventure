@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dobmka1eqvq8i"]
+[gd_scene load_steps=15 format=3 uid="uid://dobmka1eqvq8i"]
 
 [ext_resource type="Texture2D" uid="uid://dkcwa57awekf1" path="res://Assets/Pixel Adventure 2/Enemies/Bat/Idle (46x30).png" id="1_5k2n6"]
 [ext_resource type="Script" path="res://Characters/Scripts/bat.gd" id="1_7lmv1"]
@@ -150,16 +150,21 @@ _data = {
 "hit": SubResource("Animation_btpu4")
 }
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_fr0wi"]
-radius = 7.07107
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0gckq"]
+size = Vector2(9.5, 12)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qio7i"]
-radius = 4.0
-height = 14.0
+radius = 6.0
+height = 16.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_77eq3"]
+radius = 76.0592
 
 [node name="Bat" type="CharacterBody2D" groups=["Enemies"]]
+light_mask = 4
+visibility_layer = 2
 collision_layer = 4
-collision_mask = 2
+collision_mask = 3
 motion_mode = 1
 script = ExtResource("1_7lmv1")
 
@@ -174,8 +179,9 @@ libraries = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-9.95497e-06, 5.75)
 rotation = 1.5708
-shape = SubResource("CircleShape2D_fr0wi")
+shape = SubResource("RectangleShape2D_0gckq")
 
 [node name="RayBat" type="RayCast2D" parent="."]
 target_position = Vector2(-25, 0)
@@ -190,12 +196,19 @@ max_distance = 250.0
 
 [node name="Dead" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_jig58")
-volume_db = -5.701
-pitch_scale = 1.5
+volume_db = -10.0
+pitch_scale = 1.3
 
 [node name="HitboxEnemy" parent="." instance=ExtResource("7_rsd50")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxEnemy"]
-position = Vector2(0, -9)
-rotation = 1.57079
+position = Vector2(0, -5)
 shape = SubResource("CapsuleShape2D_qio7i")
+
+[node name="AreaDetection" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaDetection"]
+shape = SubResource("CircleShape2D_77eq3")
+
+[connection signal="body_entered" from="AreaDetection" to="." method="_on_area_detection_body_entered"]
+[connection signal="body_exited" from="AreaDetection" to="." method="_on_area_detection_body_exited"]

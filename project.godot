@@ -62,8 +62,8 @@ enter={
 
 [layer_names]
 
-2d_render/layer_1="Walls"
-2d_render/layer_2="Player"
+2d_render/layer_1="Player"
+2d_render/layer_2="Walls"
 2d_render/layer_3="Enemies"
 2d_render/layer_4="Items"
 2d_render/layer_5="Traps"
