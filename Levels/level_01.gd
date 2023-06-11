@@ -5,7 +5,7 @@ var readyToOpen = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	
+#	$BackgroundSound.play()
 	$HUD/Anim.play("heart")
 	if Globals.inside_buildings == true:
 		get_node("Characters/MaskDude").position = Globals.player_position

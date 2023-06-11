@@ -1,6 +1,5 @@
 extends CharacterBody2D
 
-
 @export var speed = 40.0
 @onready var rayslime := $RaySlime as RayCast2D
 @onready var rayleft := $RayLeft as RayCast2D

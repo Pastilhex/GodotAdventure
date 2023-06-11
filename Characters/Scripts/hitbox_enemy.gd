@@ -12,4 +12,3 @@ func _on_body_entered(body):
 		tween.tween_property(owner, "position", owner.position - Vector2(0,-20), 0.25)
 		tween1.tween_property(owner, "modulate:a", 0, 0.25)
 		tween.tween_callback(owner.queue_free)
-
