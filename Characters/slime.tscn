@@ -1,13 +1,13 @@
-[gd_scene load_steps=12 format=3 uid="uid://dwaqu8lenhf01"]
+[gd_scene load_steps=13 format=3 uid="uid://dwaqu8lenhf01"]
 
 [ext_resource type="Script" path="res://Characters/Scripts/slime.gd" id="1_fxc6d"]
 [ext_resource type="Texture2D" uid="uid://cce8tdxxgb58t" path="res://Assets/Pixel Adventure 2/Enemies/Slime/Idle-Run (44x30).png" id="1_gfqcu"]
 [ext_resource type="Texture2D" uid="uid://c01270m2vds3d" path="res://Assets/Pixel Adventure 2/Enemies/Slime/Hit (44x30).png" id="2_m7tkp"]
-[ext_resource type="AudioStream" uid="uid://dgn32aw2100ys" path="res://Assets/cartoon-jump-6462.mp3" id="4_w8wtf"]
+[ext_resource type="AudioStream" uid="uid://dgn32aw2100ys" path="res://Assets/Sounds/cartoon-jump-6462.mp3" id="4_ca1r6"]
 [ext_resource type="PackedScene" uid="uid://cwkrjijkgqjf0" path="res://Characters/hitbox_enemy.tscn" id="5_fr6m7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_04rvj"]
-size = Vector2(36, 20)
+size = Vector2(36, 21)
 
 [sub_resource type="Animation" id="Animation_1tymm"]
 length = 0.001
@@ -46,6 +46,47 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_v1j0l"]
+resource_name = "dead"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_m7tkp")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [5]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
 }
 
 [sub_resource type="Animation" id="Animation_g180b"]
@@ -132,6 +173,7 @@ tracks/2/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_i527m"]
 _data = {
 "RESET": SubResource("Animation_1tymm"),
+"dead": SubResource("Animation_v1j0l"),
 "hit": SubResource("Animation_g180b"),
 "run": SubResource("Animation_o8ghw")
 }
@@ -146,7 +188,7 @@ script = ExtResource("1_fxc6d")
 slime_margin = Vector2(-30, 0)
 
 [node name="SlimeBody" type="CollisionShape2D" parent="."]
-position = Vector2(0, 5)
+position = Vector2(0, 4.5)
 shape = SubResource("RectangleShape2D_04rvj")
 debug_color = Color(0, 0.6, 0.701961, 0.419608)
 
@@ -172,7 +214,7 @@ collision_mask = 2
 collide_with_areas = true
 
 [node name="Dead" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("4_w8wtf")
+stream = ExtResource("4_ca1r6")
 volume_db = -5.701
 pitch_scale = 1.5
 
@@ -182,5 +224,3 @@ scale = Vector2(1.2, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxEnemy"]
 shape = SubResource("RectangleShape2D_08keb")
-
-[connection signal="body_entered" from="HitboxEnemy" to="." method="_on_hitbox_enemy_body_entered"]

@@ -1,0 +1,80 @@
+[gd_scene load_steps=13 format=3 uid="uid://b5g60jaaxuegg"]
+
+[ext_resource type="Texture2D" uid="uid://bxtx1hewfps74" path="res://Assets/Kings and Pigs/Sprites/12-Live and Coins/Big Heart Idle (18x14).png" id="1_5y3op"]
+[ext_resource type="Script" path="res://Items/health.gd" id="1_27v0y"]
+[ext_resource type="PackedScene" uid="uid://cq6r348ngg40q" path="res://Items/item_collected_area.tscn" id="2_ln88l"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_078hf"]
+atlas = ExtResource("1_5y3op")
+region = Rect2(0, 0, 18, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_peapx"]
+atlas = ExtResource("1_5y3op")
+region = Rect2(18, 0, 18, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rwx7u"]
+atlas = ExtResource("1_5y3op")
+region = Rect2(36, 0, 18, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hea4d"]
+atlas = ExtResource("1_5y3op")
+region = Rect2(54, 0, 18, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wyl00"]
+atlas = ExtResource("1_5y3op")
+region = Rect2(72, 0, 18, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m6wj4"]
+atlas = ExtResource("1_5y3op")
+region = Rect2(90, 0, 18, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qe13f"]
+atlas = ExtResource("1_5y3op")
+region = Rect2(108, 0, 18, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ygbqy"]
+atlas = ExtResource("1_5y3op")
+region = Rect2(126, 0, 18, 14)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xf875"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_078hf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_peapx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rwx7u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hea4d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wyl00")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m6wj4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qe13f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ygbqy")
+}],
+"loop": true,
+"name": &"health",
+"speed": 6.0
+}]
+
+[node name="Health" type="Node2D"]
+script = ExtResource("1_27v0y")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+modulate = Color(1, 0, 0.32549, 1)
+position = Vector2(-2, 0)
+sprite_frames = SubResource("SpriteFrames_xf875")
+animation = &"health"
+
+[node name="ItemCollectedArea" parent="." instance=ExtResource("2_ln88l")]

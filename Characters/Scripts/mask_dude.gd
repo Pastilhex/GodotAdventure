@@ -1,13 +1,14 @@
 extends CharacterBody2D
 
 @export var health = 100
-@export var knockback_power = 400
+@export var knockback_power = 300
 const speed = 100.0
 const jump_velocity = -400.0
 var jump_count = 0
 var jump_speed = -250
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var grounded = false
+@onready var enemy_hit = $Damage
 signal update_health()
 
 func horizontal_animation(direction):
@@ -80,17 +81,15 @@ func health_update():
 func knockback(enemyVelocity: Vector2):
 	var knockback_direction = (enemyVelocity - velocity).normalized() * knockback_power
 	velocity = knockback_direction
+	enemy_hit.play()
 	move_and_slide()
 
 func _on_damage_player_area_body_entered(body):
-	print(body.name)
 	if body.is_in_group("enemy"):
-		if not body.is_in_group("flyers"):
-			knockback(body.velocity)
+		knockback(body.velocity)
 		Globals.player_health =  Globals.player_health - 10
 		if Globals.player_health > 0:
 			health_update()
 		else:
 			queue_free()
-			
 			get_tree().reload_current_scene()

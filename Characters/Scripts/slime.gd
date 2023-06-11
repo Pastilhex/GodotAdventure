@@ -11,7 +11,8 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 func _ready():
 	$AnimationPlayer.play("run")
 
-func _physics_process(_delta):
+func _physics_process(delta):
+	velocity.y += gravity * delta
 	velocity.x = speed * move_direction
 	if not rayleft.is_colliding() || rayslime.is_colliding():
 		rayslime.target_position = slime_margin * move_direction

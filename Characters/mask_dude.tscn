@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://pijarwh14ueu"]
+[gd_scene load_steps=34 format=3 uid="uid://pijarwh14ueu"]
 
 [ext_resource type="Script" path="res://Characters/Scripts/mask_dude.gd" id="1_i50p7"]
 [ext_resource type="Texture2D" uid="uid://cwggo32p07k0a" path="res://Assets/Pixel Adventure 1/Free/Main Characters/Mask Dude/Idle (32x32).png" id="1_ny5w1"]
@@ -8,13 +8,14 @@
 [ext_resource type="Texture2D" uid="uid://dj78ihaxkcl1w" path="res://Assets/Pixel Adventure 1/Free/Main Characters/Mask Dude/Hit (32x32).png" id="5_8r4ip"]
 [ext_resource type="Texture2D" uid="uid://b4m54ugwexifd" path="res://Assets/Pixel Adventure 1/Free/Main Characters/Mask Dude/Fall (32x32).png" id="6_m0sqf"]
 [ext_resource type="Texture2D" uid="uid://k1f5fc73cv0o" path="res://Assets/Pixel Adventure 1/Free/Main Characters/Mask Dude/Wall Jump (32x32).png" id="6_omqx0"]
-[ext_resource type="AudioStream" uid="uid://cvg4biwxpjlq3" path="res://Assets/toy-button-105724.mp3" id="7_tp272"]
 [ext_resource type="AudioStream" uid="uid://dhv37gxv73jpa" path="res://Sound/SFX/Step/step-01.ogg" id="9_wm2un"]
 [ext_resource type="AudioStream" uid="uid://bbqv668085lq0" path="res://Sound/SFX/Step/step-02.ogg" id="10_qisnv"]
 [ext_resource type="AudioStream" uid="uid://bu77nmg3qffkj" path="res://Sound/SFX/Step/step-03.ogg" id="11_q3ycq"]
 [ext_resource type="PackedScene" uid="uid://dagsvruoorn4c" path="res://Textures/gpu_particles_2d.tscn" id="11_skss5"]
 [ext_resource type="AudioStream" uid="uid://6e7l6nygt3ud" path="res://Sound/SFX/Step/step-04.ogg" id="12_4rquk"]
 [ext_resource type="AudioStream" uid="uid://dobpv86603h5o" path="res://Sound/SFX/Step/step-05.ogg" id="13_o16kw"]
+[ext_resource type="AudioStream" uid="uid://cvg4biwxpjlq3" path="res://Assets/Sounds/toy-button-105724.mp3" id="14_e4oqc"]
+[ext_resource type="AudioStream" uid="uid://dgn32aw2100ys" path="res://Assets/Sounds/cartoon-jump-6462.mp3" id="14_hne00"]
 [ext_resource type="AudioStream" uid="uid://c1y3ownkjnbgm" path="res://Sound/SFX/landing.ogg" id="15_c7o7e"]
 [ext_resource type="Script" path="res://Characters/DamagePlayerArea.gd" id="17_fc32u"]
 
@@ -448,14 +449,13 @@ stream = SubResource("AudioStreamRandomizer_4ehhv")
 volume_db = 10.0
 
 [node name="Jump" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("7_tp272")
-volume_db = -20.0
+stream = ExtResource("14_hne00")
 pitch_scale = 1.5
+max_polyphony = 2
 
 [node name="Landing" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("15_c7o7e")
 volume_db = 2.0
-pitch_scale = 0.45
 
 [node name="Dust" parent="." instance=ExtResource("11_skss5")]
 show_behind_parent = true
@@ -481,5 +481,9 @@ script = ExtResource("17_fc32u")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DamagePlayerArea"]
 position = Vector2(1, 0.5)
 shape = SubResource("RectangleShape2D_ir0v1")
+
+[node name="Damage" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_e4oqc")
+max_polyphony = 5
 
 [connection signal="body_entered" from="DamagePlayerArea" to="." method="_on_damage_player_area_body_entered"]
