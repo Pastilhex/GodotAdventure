@@ -419,6 +419,8 @@ size = Vector2(22, 23)
 
 [node name="MaskDude" type="CharacterBody2D" groups=["player"]]
 collision_mask = 6
+floor_constant_speed = true
+floor_snap_length = 5.0
 platform_floor_layers = 4294967291
 script = ExtResource("1_i50p7")
 knockback_power = 600
