@@ -1,4 +1,4 @@
-[gd_scene load_steps=75 format=3 uid="uid://defpfy0ej6n2t"]
+[gd_scene load_steps=76 format=3 uid="uid://defpfy0ej6n2t"]
 
 [ext_resource type="Texture2D" uid="uid://ceuwm85grynbm" path="res://Assets/Pixel Adventure 1/Free/Terrain/Terrain (16x16).png" id="1_hwr0v"]
 [ext_resource type="Script" path="res://Levels/level_01.gd" id="1_nd26v"]
@@ -46,6 +46,7 @@
 [ext_resource type="Script" path="res://Levels/TreeHouseSign.gd" id="43_j7ado"]
 [ext_resource type="Texture2D" uid="uid://gkr0uf7t8edg" path="res://Assets/Fonts/Question-Mark-PNG-Picture.png" id="44_bx1uf"]
 [ext_resource type="Script" path="res://Levels/Complete.gd" id="46_qxoth"]
+[ext_resource type="PackedScene" uid="uid://ct655du4gyd4q" path="res://Characters/npc.tscn" id="47_y6y56"]
 
 [sub_resource type="FontFile" id="FontFile_g1k7g"]
 face_index = null
@@ -3829,7 +3830,7 @@ z_index = 1
 script = ExtResource("22_2wj3b")
 
 [node name="Apple" parent="Items" groups=["fruits"] instance=ExtResource("19_k7ovu")]
-position = Vector2(85, 437)
+position = Vector2(1201, 716)
 
 [node name="Apple2" parent="Items" groups=["fruits"] instance=ExtResource("19_k7ovu")]
 position = Vector2(65, 1003)
@@ -3871,10 +3872,11 @@ position = Vector2(1845, 706)
 script = ExtResource("33_uceug")
 
 [node name="Timer" type="Timer" parent="Items"]
-wait_time = 120.0
+wait_time = 60.0
 autostart = true
 
 [node name="Characters" type="Node2D" parent="."]
+z_index = 1
 
 [node name="Bat" parent="Characters" groups=["enemy", "flyers"] instance=ExtResource("11_y5puc")]
 position = Vector2(251, 979)
@@ -3893,14 +3895,14 @@ position = Vector2(1389, 691)
 position = Vector2(1698, 809)
 
 [node name="MaskDude" parent="Characters" instance=ExtResource("2_1f664")]
-position = Vector2(142, 472)
+position = Vector2(130, 472)
 
 [node name="Slime" parent="Characters" groups=["enemy"] instance=ExtResource("14_tyjo5")]
-position = Vector2(561, 989)
+position = Vector2(564, 1003)
 scale = Vector2(0.9, 0.9)
 
 [node name="Slime2" parent="Characters" groups=["enemy"] instance=ExtResource("14_tyjo5")]
-position = Vector2(1425, 1018)
+position = Vector2(1425, 1019)
 scale = Vector2(0.9, 0.9)
 
 [node name="Slime3" parent="Characters" groups=["enemy"] instance=ExtResource("14_tyjo5")]
@@ -3910,8 +3912,7 @@ scale = Vector2(0.9, 0.9)
 [node name="Slime4" parent="Characters" groups=["enemy"] instance=ExtResource("14_tyjo5")]
 position = Vector2(317, 682)
 scale = Vector2(0.9, 0.9)
-collision_layer = 6
-collision_mask = 1
+collision_mask = 3
 
 [node name="BombGuy" parent="Characters" groups=["enemy"] instance=ExtResource("17_ugsqq")]
 position = Vector2(132, 763)
@@ -3919,7 +3920,6 @@ scale = Vector2(0.5, 0.5)
 ray_margin = Vector2(50, 0)
 
 [node name="TreeHouseDoor" type="Area2D" parent="."]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TreeHouseDoor"]
 position = Vector2(1042.5, 427.5)
@@ -4010,6 +4010,10 @@ to enter"
 horizontal_alignment = 1
 vertical_alignment = 2
 autowrap_mode = 3
+
+[node name="Npc" parent="." instance=ExtResource("47_y6y56")]
+position = Vector2(1019, 424)
+scale = Vector2(0.639078, 0.639078)
 
 [connection signal="timeout" from="Items/Timer" to="Items" method="_on_timer_timeout"]
 [connection signal="update_health" from="Characters/MaskDude" to="HUD/healthbar" method="_on_mask_dude_update_health"]

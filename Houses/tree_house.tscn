@@ -1705,7 +1705,7 @@ shadow_item_cull_mask = 5
 texture = ExtResource("15_6ab0k")
 
 [node name="MaskDude" parent="." instance=ExtResource("3_w5red")]
-position = Vector2(212, 480)
+position = Vector2(213, 480)
 collision_mask = 2
 
 [node name="TreeHouseDoor" type="Area2D" parent="."]
@@ -1733,7 +1733,7 @@ scale = Vector2(0.75, 0.75)
 position = Vector2(330, 197)
 scale = Vector2(0.75, 0.75)
 
-[node name="Chiken" parent="." instance=ExtResource("27_8l31m")]
+[node name="Chicken" parent="." instance=ExtResource("27_8l31m")]
 position = Vector2(255, 48)
 
 [connection signal="update_health" from="MaskDude" to="HUD/healthbar" method="_on_mask_dude_update_health"]

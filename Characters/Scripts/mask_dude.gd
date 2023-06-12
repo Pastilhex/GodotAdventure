@@ -92,6 +92,6 @@ func _on_damage_player_area_body_entered(body):
 			health_update()
 		else:
 			queue_free()
-			get_tree().reload_current_scene()
+			get_tree().change_scene_to_file("res://main_menu.tscn")
 	elif body.is_in_group("chicken"):
 		queue_free()

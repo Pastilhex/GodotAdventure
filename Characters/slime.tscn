@@ -188,6 +188,8 @@ script = ExtResource("1_fxc6d")
 slime_margin = Vector2(-30, 0)
 
 [node name="SlimeBody" type="CollisionShape2D" parent="."]
+light_mask = 4
+visibility_layer = 3
 position = Vector2(0, 4.5)
 shape = SubResource("RectangleShape2D_04rvj")
 debug_color = Color(0, 0.6, 0.701961, 0.419608)

@@ -450,6 +450,7 @@ volume_db = 10.0
 
 [node name="Jump" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("14_hne00")
+volume_db = -10.0
 pitch_scale = 1.5
 max_polyphony = 2
 
