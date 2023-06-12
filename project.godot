@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="PixelAdventure"
-run/main_scene="res://Levels/level_01.tscn"
+run/main_scene="res://main_menu.tscn"
 config/features=PackedStringArray("4.0", "Mobile")
 config/icon="res://icon.svg"
 

@@ -179,7 +179,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_08keb"]
-size = Vector2(20, 6)
+size = Vector2(16.6667, 6)
 
 [node name="Slime" type="CharacterBody2D"]
 collision_layer = 4

@@ -5,10 +5,7 @@ var readyToOpen = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$BackgroundSound.play()
-	$HUD/Health.play("heart")
-	$HUD/Melon.play("default")
-	
+#	$BackgroundSound.play()
 	if Globals.inside_buildings == true:
 		get_node("Characters/MaskDude").position = Globals.player_position
 		Globals.inside_buildings = false
@@ -20,7 +17,9 @@ func _process(_delta):
 		get_tree().change_scene_to_file("res://Houses/tree_house.tscn")
 
 func _on_tree_house_door_body_entered(_body):
-	readyToOpen = true
+	if Globals.fruit >= 10:
+		readyToOpen = true
 
 func _on_tree_house_door_body_exited(_body):
-		readyToOpen = true
+		readyToOpen = false
+

@@ -1,0 +1,125 @@
+[gd_scene load_steps=19 format=3 uid="uid://dm05dcr1arpvq"]
+
+[ext_resource type="Texture2D" uid="uid://b1kr7ai0p20l4" path="res://Assets/Pixel Adventure 2/Enemies/Chicken/Idle (32x34).png" id="1_8aopt"]
+[ext_resource type="PackedScene" uid="uid://cwkrjijkgqjf0" path="res://Characters/hitbox_enemy.tscn" id="2_in40e"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lxory"]
+atlas = ExtResource("1_8aopt")
+region = Rect2(0, 0, 32, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6jvsk"]
+atlas = ExtResource("1_8aopt")
+region = Rect2(32, 0, 32, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e0yph"]
+atlas = ExtResource("1_8aopt")
+region = Rect2(64, 0, 32, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ag5xx"]
+atlas = ExtResource("1_8aopt")
+region = Rect2(96, 0, 32, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lk2lt"]
+atlas = ExtResource("1_8aopt")
+region = Rect2(128, 0, 32, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pf0od"]
+atlas = ExtResource("1_8aopt")
+region = Rect2(160, 0, 32, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wvr6b"]
+atlas = ExtResource("1_8aopt")
+region = Rect2(192, 0, 32, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0hl56"]
+atlas = ExtResource("1_8aopt")
+region = Rect2(224, 0, 32, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wr45u"]
+atlas = ExtResource("1_8aopt")
+region = Rect2(256, 0, 32, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bs076"]
+atlas = ExtResource("1_8aopt")
+region = Rect2(288, 0, 32, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kb5mj"]
+atlas = ExtResource("1_8aopt")
+region = Rect2(320, 0, 32, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a2f3u"]
+atlas = ExtResource("1_8aopt")
+region = Rect2(352, 0, 32, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v8lkl"]
+atlas = ExtResource("1_8aopt")
+region = Rect2(384, 0, 32, 34)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hqieb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lxory")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6jvsk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e0yph")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ag5xx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lk2lt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pf0od")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wvr6b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0hl56")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wr45u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bs076")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kb5mj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a2f3u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v8lkl")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jbya5"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g2ud4"]
+radius = 13.0
+height = 36.0
+
+[node name="Chiken" type="CharacterBody2D"]
+scale = Vector2(-1, 1)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_hqieb")
+frame_progress = 0.211761
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CapsuleShape2D_jbya5")
+
+[node name="HitboxEnemy" parent="." instance=ExtResource("2_in40e")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxEnemy"]
+shape = SubResource("CapsuleShape2D_g2ud4")

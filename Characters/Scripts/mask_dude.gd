@@ -93,3 +93,5 @@ func _on_damage_player_area_body_entered(body):
 		else:
 			queue_free()
 			get_tree().reload_current_scene()
+	elif body.is_in_group("chicken"):
+		queue_free()

@@ -192,7 +192,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s7vgo"]
-size = Vector2(40, 39)
+size = Vector2(30, 39)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rtbs4"]
 size = Vector2(21.6667, 9)
@@ -217,7 +217,7 @@ animation = &"hit"
 speed_scale = 1.9
 
 [node name="BodyCollisionShape" type="CollisionShape2D" parent="."]
-position = Vector2(-1, 6.5)
+position = Vector2(0, 6.5)
 shape = SubResource("RectangleShape2D_s7vgo")
 
 [node name="HitboxEnemy" parent="." instance=ExtResource("41_qp1uy")]

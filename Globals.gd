@@ -16,7 +16,6 @@ var player_mana_recovery = 1.0
 #Items Control
 var fruit = 0
 
-
 #Tree House Door System
 func set_data(plx, ply):
 	player_position = Vector2(plx, ply)
